@@ -371,18 +371,4 @@ void peer::shutdown() {
     hb_task_.reset();
 }
 
-
-void peer::reopen(context& ctx, timer_task<int32>::executor& hb_exec) {
-    p_tr("peer %d reopen", get_id());
-    abandoned_ = false;
-
-    scheduler_ = ctx.scheduler_;
-    hb_task_ = cs_new< timer_task<int32>,
-                            timer_task<int32>::executor&,
-                            int32 >
-                          ( hb_exec, get_id(),
-                            timer_task_type::heartbeat_timer ) ;
-    p_tr("call peer %d reopen succeeded", get_id());
-}
-
 } // namespace nuraft;

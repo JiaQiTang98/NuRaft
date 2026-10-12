@@ -258,8 +258,6 @@ public:
 
     void shutdown();
 
-    void reopen(context& ctx, timer_task<int32>::executor& hb_exec);
-
     bool is_abandoned() const { return abandoned_; }
 
     // Time that sent the last request.
